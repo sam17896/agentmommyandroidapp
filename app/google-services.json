@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "525386721688",
+    "firebase_url": "https://mommy-i-am-lost.firebaseio.com",
+    "project_id": "mommy-i-am-lost",
+    "storage_bucket": "mommy-i-am-lost.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525386721688:android:7d191fa30d941eed",
+        "android_client_info": {
+          "package_name": "com.example.ahsan.agentmommymessageapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525386721688-lf4honpimlbql4ikavta8olcc4e2kksh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ahsan.agentmommymessageapp",
+            "certificate_hash": "b75cd01ee347327373a4fe7f519b2c04af467c05"
+          }
+        },
+        {
+          "client_id": "525386721688-4l1gfm4dfd5tlsg78ujep0qlevekdf2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTIRKqJX6W7ACdu16yG_33d6d_jzSWU8A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525386721688-4svqlf16ru75u79dni5te4cc6fct75pb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
