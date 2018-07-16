@@ -43,8 +43,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // [END_EXCLUDE]
         String messageTxt = "Location: " + message.get("latitude") + " " + message.get("longitude") + " Zipcode: " + message.get("zipcode")
                 + " he/she said: " + message.get("message");
-        SmsManager sm = SmsManager.getDefault();
-        sm.sendTextMessage("+923328287820", null, messageTxt, null, null);
+
+        Context mContext = getApplicationContext();
+        Preference pref = new Preference(mContext);
+
+
+        if(message.get("to").equals(pref.getNumber())){
+            SmsManager sm = SmsManager.getDefault();
+            sm.sendTextMessage(pref.getNumber(), null, messageTxt, null, null);
+        }
 
 //        SmsManager smsManager = SmsManager.getDefault();
 //        byte[] messageInBytes = messageTxt.getBytes();
@@ -65,8 +72,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private void sendSMS(String phoneNumber, String message) {
         Context mContext = getApplicationContext();
         Preference pref = new Preference(mContext);
-        pref.setMessage(message);
-        pref.setNumber(phoneNumber);
         ArrayList<PendingIntent> sentPendingIntents = new ArrayList<PendingIntent>();
         ArrayList<PendingIntent> deliveredPendingIntents = new ArrayList<PendingIntent>();
         PendingIntent sentPI = PendingIntent.getBroadcast(mContext, 0,

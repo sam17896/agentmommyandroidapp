@@ -8,13 +8,21 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText number;
+    Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +30,36 @@ public class MainActivity extends AppCompatActivity {
         FirebaseMessaging.getInstance().subscribeToTopic("childlost");
         requestSmsPermission();
         FirebaseApp.initializeApp(this);
+        final Preference preference = new Preference(MainActivity.this);
+
+        number  = findViewById(R.id.number);
+        btn = findViewById(R.id.btn);
+
+        number.setText(preference.getNumber());
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(number.getText().toString().equals("") || number.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this, "Please enter number", Toast.LENGTH_SHORT).show();
+                } else if(!isValidPhoneNo(number.getText().toString())){
+                    Toast.makeText(MainActivity.this, "Please enter correct number", Toast.LENGTH_SHORT).show();
+                } else {
+                    preference.setNumber(number.getText().toString());
+
+
+                    Toast.makeText(MainActivity.this, "Number saved!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         // Start the background Firebase activity
       //  startService(new Intent(this, FirebaseBackgroundService.class));
     }
-
+    public static boolean isValidPhoneNo(CharSequence iPhoneNo) {
+        return !TextUtils.isEmpty(iPhoneNo) &&
+                Patterns.PHONE.matcher(iPhoneNo).matches();
+    }
     private static final int PERMISSION_SEND_SMS = 123;
 
     private void requestSmsPermission() {
