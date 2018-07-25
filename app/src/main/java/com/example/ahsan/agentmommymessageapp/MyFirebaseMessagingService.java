@@ -41,8 +41,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // and data payloads are treated as notification messages. The Firebase console always sends notification
         // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
         // [END_EXCLUDE]
-        String messageTxt = "Location: " + message.get("latitude") + " " + message.get("longitude") + " Zipcode: " + message.get("zipcode")
-                + " he/she said: " + message.get("message");
+        String messageTxt = /* "Location: " + message.get("latitude") + " " + message.get("longitude") + */" Zipcode: " + message.get("zipcode");
+             //   + " he/she said: " + message.get("message");
 
         Context mContext = getApplicationContext();
         Preference pref = new Preference(mContext);

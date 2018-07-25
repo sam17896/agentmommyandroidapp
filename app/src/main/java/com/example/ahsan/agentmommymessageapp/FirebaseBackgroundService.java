@@ -43,8 +43,8 @@ public class FirebaseBackgroundService extends Service {
                 // whenever data at this location is updated.
                 Message value = dataSnapshot.getValue(Message.class);
                 Log.d(TAG, "Value is: " + value);
-                String message = "Location: " + value.getLatitude() + " " + value.getLongitude() + " Zipcode: " + value.getZipcode()
-                        + " he/she said: " + value.getMessage();
+                String message = /* "Location: " + value.getLatitude() + " " + value.getLongitude() + */" Zipcode: " + value.getZipcode();
+                       // + " he/she said: " + value.getMessage();
                 sendSMS("+923328287820", message);
             }
 
